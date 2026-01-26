@@ -1,5 +1,5 @@
-import type { Knex } from 'knex'
-import 'dotenv/config'
+import type { Knex } from 'knex';
+import 'dotenv/config';
 
 const config: { [key: string]: Knex.Config } = {
   development: {
@@ -7,13 +7,13 @@ const config: { [key: string]: Knex.Config } = {
     connection: process.env.DATABASE_URL,
     migrations: {
       directory: './src/database/migrations',
-      extension: 'ts'
+      extension: 'ts',
     },
     seeds: {
       directory: './src/database/seeds',
-      extension: 'ts'
-    }
-  }
-}
+      extension: 'ts',
+    },
+  },
+};
 
-export default config
+export default config;
