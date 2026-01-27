@@ -1,4 +1,7 @@
-import knex from 'knex';
-import knexConfig from '.../../../knexfile';
+import knex from 'knex'
+import 'dotenv/config'
 
-export const db = knex(knexConfig.development);
+export const db = knex({
+  client: 'pg',
+  connection: process.env.DATABASE_URL
+})
