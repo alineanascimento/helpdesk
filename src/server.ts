@@ -3,6 +3,8 @@ import cors from 'cors'
 import 'dotenv/config'
 import authRoutes from './routes/auth-routes'
 import testRoutes from './routes/test-routes'
+import technicianRoutes from './routes/technician-routes'
+
 
 const app = express()
 
@@ -14,6 +16,10 @@ app.use('/auth', authRoutes)
 
 // Test Routes
 app.use('/test', testRoutes)
+
+// Technician Routes
+app.use('/technicians', technicianRoutes)
+
 
 // Health Check
 app.get('/health', (req, res) => {
