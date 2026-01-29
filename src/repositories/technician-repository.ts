@@ -58,19 +58,10 @@ export async function findAllTechnicians(): Promise<TechnicianWithUser[]> {
     .join('technicians', 'users.id', 'technicians.user_id')
     .where('users.role', 'technician')
 
-  /***O problema:** No banco, `availability` tá como **string JSON**: `"['08:00','09:00']"`
+ // console.log('Raw technicians from DB:', technicians) 
 
-**A solução:** `JSON.parse()` converte de volta pra **array**: `['08:00', '09:00']`
-
-**O `...tech`** = spread operator, copia todos os campos do objeto
-
-**O `availability: JSON.parse(...)`** = sobrescreve só o campo `availability` */
-  return technicians.map(tech => ({
-    ...tech,
-    availability: JSON.parse(tech.availability)
-  }))
-}
-
+  return technicians
+  }
 export async function findTechnicianById(id: string): Promise<TechnicianWithUser | undefined> {
   const technician = await db('users')
     .select(
@@ -87,10 +78,7 @@ export async function findTechnicianById(id: string): Promise<TechnicianWithUser
 
   if (!technician) return undefined
 
-  return {
-    ...technician,
-    availability: JSON.parse(technician.availability)
-  }
+  return technician
 }
 
 export async function updateTechnician(id: string, data: {
@@ -99,11 +87,9 @@ export async function updateTechnician(id: string, data: {
   avatar?: string
   availability?: string[]
 }) {
-  // Atualiza users
-  /*1. `data.name` → verifica se existe (não é `undefined`)
-2. **SE** existir → `{ name: data.name }` (cria objeto com esse campo)
-3. **SE NÃO** existir → retorna `false`
-4. `...` → spread operator: "espalha" o objeto (se existir) */
+
+
+  
   if (data.name || data.email || data.avatar) {
     await db('users').where('id', id).update({
       ...(data.name && { name: data.name }),
