@@ -4,7 +4,7 @@ import 'dotenv/config'
 import authRoutes from './routes/auth-routes'
 import testRoutes from './routes/test-routes'
 import technicianRoutes from './routes/technician-routes'
-
+import serviceRoutes from './routes/service-routes'
 
 const app = express()
 
@@ -20,6 +20,8 @@ app.use('/test', testRoutes)
 // Technician Routes
 app.use('/technicians', technicianRoutes)
 
+// Service Routes
+app.use('/services', serviceRoutes)
 
 // Health Check
 app.get('/health', (req, res) => {
