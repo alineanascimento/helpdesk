@@ -7,19 +7,7 @@ import {
   updateTechnician as updateTechnicianRepo
 } from '../repositories/technician-repository'
 
-/*
-**O que faz:**
 
-- Começa com `"Tech@"` (garante que tem letra maiúscula e símbolo)
-- Adiciona 8 caracteres aleatórios
-- Resultado: algo como `Tech@aB3x9K$m`
-
-**`Math.random()`** → gera número entre 0 e 1
-
-**`Math.floor()`** → arredonda pra baixo
-
-**`chars.charAt(index)`** → pega o caractere na posição `index` 
-*/
 function generateRandomPassword(): string {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$'
   let password = 'Tech@'

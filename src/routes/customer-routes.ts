@@ -24,12 +24,12 @@ function meToUserId(req: any, res: any, next: any) {
 // 1. Rota pública
 router.post('/', createCustomerController)
 
-// 2. Rotas /me (VEM ANTES!)
+// 2. Rotas /me (
 router.get('/me', authMiddleware, meToUserId, getCustomerController)
 router.put('/me', authMiddleware, meToUserId, updateCustomerController)
 router.delete('/me', authMiddleware, meToUserId, deleteCustomerController)
 
-// 3. Rotas /:id (VEM DEPOIS!)
+// 3. Rotas /:id 
 router.get('/', authMiddleware, authorize(['admin']), listCustomersController)
 router.get('/:id', authMiddleware, authorize(['admin']), getCustomerController)
 router.put('/:id', authMiddleware, authorize(['admin']), updateCustomerController)
