@@ -43,7 +43,7 @@ export async function findCustomerById(id: string): Promise<Customer | undefined
 export async function updateCustomer(id: string, data: {
   name?: string
   email?: string
-  avatar?: string
+  avatar?: string | null
 }) {
   await db('users').where('id', id).update({
     ...(data.name && { name: data.name }),
